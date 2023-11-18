@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using Astro.Helper;
-using Dalamud;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.IoC;
+using Dalamud.Logging;
 using Dalamud.Plugin;
-using FFXIVClientStructs;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
+using FFXIVClientStructs.Interop;
 
 namespace Astro
 {
@@ -32,10 +31,11 @@ namespace Astro
         public Astro([RequiredVersion("1.0")] DalamudPluginInterface pluginInterface)
         {
             DalamudApi.Initialize(pluginInterface);
-            Resolver.Initialize();
-            
-            HookHelper.Enable<Functions.ReceiveAbility>("4C 89 44 24 ?? 55 56 41 54 41 55 41 56", ReceiveAbilityDetour);
-            HookHelper.Enable<Functions.TryAction>((IntPtr)ActionManager.fpUseAction, TryActionDetour);
+            Resolver.GetInstance.SetupSearchSpace();
+            Resolver.GetInstance.Resolve();
+
+            HookHelper.Enable<Functions.ReceiveAbility>("48 89 5C 24 ?? 4C 89 44 24 ?? 55 56 41 54 41 55 41 56", ReceiveAbilityDetour);
+            HookHelper.Enable<Functions.TryAction>((IntPtr)ActionManager.MemberFunctionPointers.UseAction, TryActionDetour);
             
             DalamudApi.Configuration = DalamudApi.PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
             DalamudApi.Configuration.Init();
@@ -47,9 +47,11 @@ namespace Astro
                 .Where(_ => !AstrologianHelper.IsAstroSignFilled && AstrologianHelper.CurrentCard is not AstrologianCard.None)
                 .Where(_ =>
                 {
-                    SafeMemory.Read((IntPtr)ActionManager.Instance() + 0x61C, out float totalGcd);
-                    SafeMemory.Read((IntPtr)ActionManager.Instance() + 0x618, out float elapsedGcd);
-                    return !(totalGcd - elapsedGcd <= 1.3f);
+                    var adjustedId = ActionManager.Instance()->GetAdjustedActionId(3596);
+                    var timeElapsed = ActionManager.Instance()->GetRecastTimeElapsed(ActionType.Spell, adjustedId);
+                    var timeTotal = ActionManager.Instance()->GetRecastTime(ActionType.Spell, adjustedId);
+                    PluginLog.Log($"{timeTotal} / {timeElapsed}");
+                    return !(timeTotal - timeElapsed <= 1.3f);
                 })
                 .Publish()
                 .RefCount();

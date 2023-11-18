@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29709.97
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Astro", "Astro\Astro.csproj", "{13C812E9-0D42-4B95-8646-40EEBF30636F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVClientStructs", "FFXIVClientStructs\FFXIVClientStructs\FFXIVClientStructs.csproj", "{24332CED-A1E3-47B3-AE98-02B8E02BB157}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVClientStructs.Generators", "FFXIVClientStructs\FFXIVClientStructs.Generators\FFXIVClientStructs.Generators.csproj", "{9F273CC0-2296-4439-AEDE-0397F13B9AAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astro", "Astro\Astro.csproj", "{13C812E9-0D42-4B95-8646-40EEBF30636F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +15,6 @@ Global
 		{13C812E9-0D42-4B95-8646-40EEBF30636F}.Debug|x64.Build.0 = Debug|x64
 		{13C812E9-0D42-4B95-8646-40EEBF30636F}.Release|x64.ActiveCfg = Release|x64
 		{13C812E9-0D42-4B95-8646-40EEBF30636F}.Release|x64.Build.0 = Release|x64
-		{24332CED-A1E3-47B3-AE98-02B8E02BB157}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{24332CED-A1E3-47B3-AE98-02B8E02BB157}.Debug|x64.Build.0 = Debug|Any CPU
-		{24332CED-A1E3-47B3-AE98-02B8E02BB157}.Release|x64.ActiveCfg = Release|Any CPU
-		{24332CED-A1E3-47B3-AE98-02B8E02BB157}.Release|x64.Build.0 = Release|Any CPU
-		{9F273CC0-2296-4439-AEDE-0397F13B9AAC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9F273CC0-2296-4439-AEDE-0397F13B9AAC}.Debug|x64.Build.0 = Debug|Any CPU
-		{9F273CC0-2296-4439-AEDE-0397F13B9AAC}.Release|x64.ActiveCfg = Release|Any CPU
-		{9F273CC0-2296-4439-AEDE-0397F13B9AAC}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

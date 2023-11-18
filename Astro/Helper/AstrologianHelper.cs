@@ -154,6 +154,7 @@ namespace Astro.Helper
                 case ClientLanguage.French:
                 case ClientLanguage.German:
                 case ClientLanguage.English:
+                case ClientLanguage.Korean:
                     return "Damage Down";
                 default:
                     throw new ArgumentOutOfRangeException();

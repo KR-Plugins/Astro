@@ -6,7 +6,7 @@
     <AssemblyTitle>Astro</AssemblyTitle>
     <Product>Astro</Product>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <AssemblyFileVersion>1.0.0.2</AssemblyFileVersion>
     <Version>1.0.0.2</Version>
     <FileVersion>1.0.0.0</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
